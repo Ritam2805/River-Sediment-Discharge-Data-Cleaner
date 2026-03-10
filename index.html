@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>River & Sediment Discharge Data Processor</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/xlsx-js-style@1.2.0/dist/xlsx.bundle.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.31/jspdf.plugin.autotable.min.js"></script>
+</head>
+<body>
+    <button type="button" id="themeToggle" class="theme-toggle" aria-label="Toggle dark/light mode">
+        <span class="theme-icon sun">☀️</span>
+        <span class="theme-icon moon">🌙</span>
+    </button>
+    <div class="container">
+        <p class="cwc-disclaimer">This is for the data cleaning for the data of River and Sediment discharge downloaded from CWC website only.</p>
+        <a href="https://cwc.gov.in" target="_blank" rel="noopener noreferrer" class="cwc-link">
+            <img src="img.png" alt="CWC" class="cwc-logo">
+            <span>CWC Website</span>
+        </a>
+        <header>
+            <h1>River & Sediment Discharge Data Processor</h1>
+            <p class="subtitle">Process and synchronize River Water Discharge and Suspended Sediment Excel files</p>
+        </header>
+
+        <div class="notes-section">
+            <h2>Important Notes</h2>
+            <div class="note-card">
+                <h3>River Water Discharge</h3>
+                <p>The River Water Discharge file must be in <strong>.xlsx</strong> format.</p>
+            </div>
+            <div class="note-card">
+                <h3>Suspended Sediment</h3>
+                <p>The Suspended Sediment file must be in <strong>.xls</strong> format.</p>
+            </div>
+        </div>
+
+        <main class="upload-section">
+            <h2>Upload Excel Files</h2>
+            
+            <form id="uploadForm" class="upload-form">
+                <div class="upload-group">
+                    <label for="riverFile">
+                        <span class="section-label">Section 1: River Water Discharge</span>
+                        <span class="format-hint">(.xlsx format required)</span>
+                    </label>
+                    <div class="file-input-wrapper">
+                        <input type="file" id="riverFile" name="river_file" accept=".xlsx,.xls" required>
+                        <span class="file-name" id="riverFileName">No file chosen</span>
+                        <button type="button" class="browse-btn" onclick="document.getElementById('riverFile').click()">Browse</button>
+                    </div>
+                </div>
+
+                <div class="upload-group">
+                    <label for="sedimentFile">
+                        <span class="section-label">Section 2: Suspended Sediment</span>
+                        <span class="format-hint">(.xls format required)</span>
+                    </label>
+                    <div class="file-input-wrapper">
+                        <input type="file" id="sedimentFile" name="sediment_file" accept=".xls,.xlsx" required>
+                        <span class="file-name" id="sedimentFileName">No file chosen</span>
+                        <button type="button" class="browse-btn" onclick="document.getElementById('sedimentFile').click()">Browse</button>
+                    </div>
+                </div>
+
+                <div id="errorMessage" class="error-message" style="display: none;"></div>
+                <div id="successMessage" class="success-message" style="display: none;"></div>
+
+                <button type="submit" id="submitBtn" class="submit-btn">Process & Download</button>
+            </form>
+
+            <div id="downloadSection" class="download-section" style="display: none;">
+                <h3>Processed Files Ready</h3>
+                <p class="success-text">Processing complete! Download your files below:</p>
+                <div class="download-buttons">
+                    <button type="button" id="downloadRiver" class="download-btn">Download River Water Discharge (Updated)</button>
+                    <button type="button" id="downloadSediment" class="download-btn">Download Suspended Sediment (Updated)</button>
+                    <button type="button" id="downloadRiverDeleted" class="download-btn secondary">Download River Discharge Deleted</button>
+                    <button type="button" id="downloadSedimentDeleted" class="download-btn secondary">Download Sediment Deleted</button>
+                    <button type="button" id="downloadReport" class="download-btn">Download Data Cleaning Report (PDF)</button>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>Processing: Removes Metadata tab, first 6 rows, images • Converts dates • Sorts by latest • Removes zero values • Keeps earliest time per date • Matches dates between files</p>
+        </footer>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

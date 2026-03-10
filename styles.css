@@ -1,0 +1,483 @@
+/* River & Sediment Discharge Data Processor - Styles */
+
+:root {
+    --primary: #0d4f4f;
+    --primary-light: #1a6b6b;
+    --accent: #2d9d9d;
+    --accent-light: #e8f5f5;
+    --bg: #f0f7f7;
+    --card-bg: #ffffff;
+    --text: #1a2e2e;
+    --text-muted: #5a7a7a;
+    --error: #c0392b;
+    --success: #27ae60;
+    --shadow: 0 4px 20px rgba(13, 79, 79, 0.08);
+    --border-color: #e0e8e8;
+}
+
+[data-theme="dark"] {
+    --primary: #2d9d9d;
+    --primary-light: #3db3b3;
+    --accent: #40b3b3;
+    --accent-light: #1a3d3d;
+    --bg: #0f1419;
+    --card-bg: #1a2332;
+    --text: #e2e8f0;
+    --text-muted: #94a3b8;
+    --error: #f87171;
+    --success: #4ade80;
+    --shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    --border-color: #334155;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background: linear-gradient(135deg, #e8f4f4 0%, #f5faf9 50%, #eef6f6 100%);
+    color: var(--text);
+    min-height: 100vh;
+    line-height: 1.6;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+[data-theme="dark"] body {
+    background: linear-gradient(135deg, #0f1419 0%, #1a2332 50%, #0f1419 100%);
+}
+
+.theme-toggle {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    z-index: 1000;
+    width: 2.75rem;
+    height: 2.75rem;
+    border-radius: 50%;
+    border: 2px solid var(--accent);
+    background: var(--card-bg);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.theme-toggle:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.15);
+}
+
+.theme-icon {
+    font-size: 1.25rem;
+    position: absolute;
+    transition: opacity 0.3s;
+}
+
+.theme-icon.sun { opacity: 1; }
+.theme-icon.moon { opacity: 0; }
+
+[data-theme="dark"] .theme-icon.sun { opacity: 0; }
+[data-theme="dark"] .theme-icon.moon { opacity: 1; }
+
+.cwc-disclaimer {
+    text-align: center;
+    color: #dc2626 !important;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    padding: 0.5rem 1rem;
+    animation: blink 2s ease-in-out infinite;
+}
+
+[data-theme="dark"] .cwc-disclaimer {
+    color: #f87171 !important;
+}
+
+.cwc-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin: 0 auto 1.5rem;
+    padding: 0.5rem 1rem;
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    border-radius: 8px;
+    transition: opacity 0.2s, color 0.2s;
+}
+
+.cwc-link:hover {
+    opacity: 0.85;
+}
+
+.cwc-link .cwc-logo {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+}
+
+.container {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 3rem 1.5rem 2.5rem;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+header h1 {
+    font-size: 1.85rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 0.5rem;
+}
+
+.subtitle {
+    font-size: 1rem;
+    color: var(--text-muted);
+}
+
+.notes-section {
+    margin-bottom: 2rem;
+}
+
+.notes-section h2 {
+    font-size: 1.1rem;
+    color: var(--primary);
+    margin-bottom: 1rem;
+}
+
+.note-card {
+    background: var(--card-bg);
+    border-radius: 12px;
+    padding: 1.25rem;
+    margin-bottom: 1rem;
+    box-shadow: var(--shadow);
+    border-left: 4px solid var(--accent);
+}
+
+.note-card h3 {
+    font-size: 1rem;
+    color: var(--primary);
+    margin-bottom: 0.5rem;
+}
+
+.note-card p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+.upload-section {
+    background: var(--card-bg);
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: var(--shadow);
+}
+
+.upload-section h2 {
+    font-size: 1.25rem;
+    color: var(--primary);
+    margin-bottom: 1.5rem;
+}
+
+.upload-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.upload-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.upload-group label {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.section-label {
+    font-weight: 600;
+    color: var(--text);
+}
+
+.format-hint {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.file-input-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    border: 2px dashed var(--accent);
+    border-radius: 10px;
+    padding: 0.75rem 1rem;
+    background: var(--accent-light);
+}
+
+.file-input-wrapper input[type="file"] {
+    display: none;
+}
+
+.file-name {
+    flex: 1;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+.browse-btn {
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+
+.browse-btn:hover {
+    background: var(--primary-light);
+}
+
+.validation-note {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+.error-message {
+    background: #fde8e8;
+    color: var(--error);
+    padding: 1rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    border-left: 4px solid var(--error);
+}
+
+[data-theme="dark"] .error-message {
+    background: rgba(248, 113, 113, 0.15);
+}
+
+.success-message {
+    background: #e8f8f0;
+    color: var(--success);
+    padding: 1rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    border-left: 4px solid var(--success);
+}
+
+[data-theme="dark"] .success-message {
+    background: rgba(74, 222, 128, 0.15);
+}
+
+.submit-btn {
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 1rem 1.5rem;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.submit-btn:hover {
+    background: var(--primary-light);
+}
+
+.submit-btn:disabled {
+    background: var(--text-muted);
+    cursor: not-allowed;
+}
+
+.download-section {
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.download-section h3 {
+    font-size: 1.1rem;
+    color: var(--primary);
+    margin-bottom: 0.5rem;
+}
+
+.success-text {
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+}
+
+.download-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.download-btn {
+    padding: 0.75rem 1.25rem;
+    background: var(--accent);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    cursor: pointer;
+}
+
+.download-btn:hover {
+    background: var(--primary-light);
+}
+
+.download-btn.secondary {
+    background: var(--card-bg);
+    color: var(--primary);
+    border: 2px solid var(--accent);
+}
+
+.download-btn.secondary:hover {
+    background: var(--accent-light);
+}
+
+footer {
+    margin-top: 2.5rem;
+    text-align: center;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 2.5rem 1rem 1.5rem;
+    }
+
+    header h1 {
+        font-size: 1.5rem;
+    }
+
+    .subtitle {
+        font-size: 0.9rem;
+    }
+
+    .theme-toggle {
+        top: 0.75rem;
+        right: 0.75rem;
+        width: 2.5rem;
+        height: 2.5rem;
+    }
+
+    .cwc-disclaimer {
+        font-size: 0.8rem;
+        padding: 0.5rem 0.75rem;
+    }
+
+    .upload-section {
+        padding: 1.5rem;
+    }
+
+    .file-input-wrapper {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .browse-btn {
+        align-self: flex-start;
+    }
+
+    .download-buttons {
+        gap: 0.5rem;
+    }
+
+    .download-btn {
+        font-size: 0.9rem;
+        padding: 0.65rem 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 2rem 0.75rem 1rem;
+    }
+
+    header h1 {
+        font-size: 1.25rem;
+    }
+
+    .subtitle {
+        font-size: 0.85rem;
+    }
+
+    .note-card {
+        padding: 1rem;
+    }
+
+    .upload-section {
+        padding: 1rem;
+        border-radius: 12px;
+    }
+
+    .upload-section h2 {
+        font-size: 1.1rem;
+    }
+
+    .section-label {
+        font-size: 0.95rem;
+    }
+
+    .submit-btn {
+        padding: 0.875rem 1rem;
+        font-size: 0.95rem;
+    }
+
+    .theme-toggle {
+        top: 0.5rem;
+        right: 0.5rem;
+        width: 2.25rem;
+        height: 2.25rem;
+    }
+
+    .theme-icon {
+        font-size: 1.1rem;
+    }
+
+    .cwc-disclaimer {
+        font-size: 0.75rem;
+    }
+
+    footer p {
+        font-size: 0.75rem;
+    }
+}
+
+@media (min-width: 769px) {
+    .container {
+        padding: 2.5rem 1.5rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .container {
+        max-width: 800px;
+        padding: 3rem 2rem;
+    }
+}
